@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Registration Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to right, #74ebd5, #ACB6E5);
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            width: 500px;
+            margin: auto;
+            background: #ffffff;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0px 0px 15px gray;
+        }
+
+        h2 {
+            text-align: center;
+            color: darkblue;
+        }
+
+        label {
+            font-weight: bold;
+            color: #333;
+        }
+
+        input[type="text"],
+        input[type="password"],
+        input[type="email"],
+        select,
+        textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 8px 0 15px;
+            border: 2px solid #4CAF50;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        textarea {
+            resize: none;
+        }
+
+        .radio-group,
+        .checkbox-group {
+            margin-bottom: 15px;
+        }
+
+        .radio-group label,
+        .checkbox-group label {
+            font-weight: normal;
+            margin-right: 15px;
+        }
+
+        .btn {
+            width: 45%;
+            padding: 12px;
+            border: none;
+            border-radius: 8px;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .submit-btn {
+            background-color: #28a745;
+        }
+
+        .submit-btn:hover {
+            background-color: #218838;
+        }
+
+        .reset-btn {
+            background-color: #dc3545;
+            float: right;
+        }
+
+        .reset-btn:hover {
+            background-color: #c82333;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+    <h2>🎓 Student Registration Form</h2>
+
+    <form>
+
+        <label>Full Name</label>
+        <input type="text" placeholder="Enter your full name" required>
+
+        <label>Email Address</label>
+        <input type="email" placeholder="Enter your email" required>
+
+        <label>Password</label>
+        <input type="password" placeholder="Enter password" required>
+
+        <label>Gender</label>
+        <div class="radio-group">
+            <input type="radio" name="gender"> Male
+            <input type="radio" name="gender"> Female
+            <input type="radio" name="gender"> Other
+        </div>
+
+        <label>Courses Interested</label>
+        <div class="checkbox-group">
+            <input type="checkbox"> Computer Science
+            <input type="checkbox"> Mathematics
+            <input type="checkbox"> Physics
+        </div>
+
+        <label>Select Department</label>
+        <select>
+            <option>--Select Department--</option>
+            <option>Computer Science</option>
+            <option>Electronics</option>
+            <option>Mechanical</option>
+            <option>Civil</option>
+            <option>Information Technology</option>
+        </select>
+
+        <label>Address</label>
+        <textarea rows="4" placeholder="Enter your address"></textarea>
+
+        <input type="submit" value="Register" class="btn submit-btn">
+        <input type="reset" value="Reset" class="btn reset-btn">
+
+    </form>
+</div>
+
+</body>
+</html>

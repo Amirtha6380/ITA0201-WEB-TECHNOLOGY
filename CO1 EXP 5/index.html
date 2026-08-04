@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>GET and POST Method Demo</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to right, #74ebd5, #ACB6E5);
+            padding: 20px;
+        }
+
+        .container {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+        }
+
+        .form-box {
+            width: 350px;
+            background: white;
+            padding: 20px;
+            margin: 15px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px gray;
+        }
+
+        h2 {
+            text-align: center;
+            color: darkblue;
+        }
+
+        label {
+            font-weight: bold;
+        }
+
+        input[type="text"],
+        input[type="email"] {
+            width: 100%;
+            padding: 8px;
+            margin: 8px 0 15px;
+            border: 2px solid #4CAF50;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            background: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background: #0056b3;
+        }
+
+        p {
+            color: #555;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+
+<h1 style="text-align:center; color:darkred;">
+    Demonstration of GET and POST Methods
+</h1>
+
+<div class="container">
+
+    <!-- GET Form -->
+    <div class="form-box">
+        <h2>GET Method</h2>
+        <p>
+            After clicking Submit, the entered data will appear in the URL.
+        </p>
+
+        <form action="" method="get">
+            <label>Name:</label>
+            <input type="text" name="name" required>
+
+            <label>Email:</label>
+            <input type="email" name="email" required>
+
+            <input type="submit" value="Submit (GET)">
+        </form>
+    </div>
+
+    <!-- POST Form -->
+    <div class="form-box">
+        <h2>POST Method</h2>
+        <p>
+            After clicking Submit, the entered data will NOT appear in the URL.
+        </p>
+
+        <form action="" method="post">
+            <label>Name:</label>
+            <input type="text" name="name" required>
+
+            <label>Email:</label>
+            <input type="email" name="email" required>
+
+            <input type="submit" value="Submit (POST)">
+        </form>
+    </div>
+
+</div>
+
+</body>
+</html>
