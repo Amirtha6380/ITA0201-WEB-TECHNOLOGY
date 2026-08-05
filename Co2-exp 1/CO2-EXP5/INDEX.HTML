@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Responsive College Website</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,sans-serif;
+}
+
+body{
+    background:#f4f8fc;
+}
+
+/* Header */
+header{
+    background:#003366;
+    color:white;
+    text-align:center;
+    padding:20px;
+}
+
+/* Navigation Bar */
+nav{
+    background:#0059b3;
+    position:sticky;
+    top:0;
+}
+
+nav ul{
+    display:flex;
+    justify-content:center;
+    list-style:none;
+}
+
+nav ul li{
+    margin:0 20px;
+}
+
+nav ul li a{
+    display:block;
+    padding:15px;
+    color:white;
+    text-decoration:none;
+    font-weight:bold;
+}
+
+nav ul li a:hover{
+    background:#003366;
+    border-radius:5px;
+}
+
+/* Hero Section */
+.hero{
+    text-align:center;
+    padding:50px 20px;
+    background:#cce6ff;
+}
+
+.hero h2{
+    color:#003366;
+    margin-bottom:10px;
+}
+
+/* Grid Layout */
+.departments{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:20px;
+    padding:30px;
+}
+
+.card{
+    background:white;
+    padding:20px;
+    border:2px solid #0059b3;
+    border-radius:10px;
+    text-align:center;
+    box-shadow:0 3px 10px rgba(0,0,0,0.2);
+}
+
+/* Flexbox */
+.facilities{
+    display:flex;
+    justify-content:space-around;
+    flex-wrap:wrap;
+    padding:30px;
+}
+
+.box{
+    width:250px;
+    background:#ffffff;
+    border:2px solid #003366;
+    padding:20px;
+    margin:10px;
+    text-align:center;
+    border-radius:10px;
+}
+
+/* Footer */
+footer{
+    background:#003366;
+    color:white;
+    text-align:center;
+    padding:20px;
+}
+
+/* Responsive Design */
+@media(max-width:768px){
+
+nav ul{
+    flex-direction:column;
+    text-align:center;
+}
+
+.departments{
+    grid-template-columns:1fr;
+}
+
+.facilities{
+    flex-direction:column;
+    align-items:center;
+}
+
+}
+</style>
+
+</head>
+
+<body>
+
+<header>
+<h1>ABC College of Engineering</h1>
+<p>Knowledge | Innovation | Excellence</p>
+</header>
+
+<nav>
+<ul>
+<li><a href="#">Home</a></li>
+<li><a href="#">About</a></li>
+<li><a href="#">Departments</a></li>
+<li><a href="#">Admissions</a></li>
+<li><a href="#">Contact</a></li>
+</ul>
+</nav>
+
+<section class="hero">
+<h2>Welcome to ABC College</h2>
+<p>Empowering students with quality education and modern technology.</p>
+</section>
+
+<section class="departments">
+
+<article class="card">
+<h3>Computer Science</h3>
+<p>Learn programming, AI, Data Science and Software Development.</p>
+</article>
+
+<article class="card">
+<h3>Information Technology</h3>
+<p>Develop modern web applications and networking skills.</p>
+</article>
+
+<article class="card">
+<h3>Electronics</h3>
+<p>Study communication systems, embedded systems and IoT.</p>
+</article>
+
+</section>
+
+<section class="facilities">
+
+<div class="box">
+<h3>Library</h3>
+<p>Over 50,000 books and digital resources.</p>
+</div>
+
+<div class="box">
+<h3>Computer Lab</h3>
+<p>High-speed internet with latest computers.</p>
+</div>
+
+<div class="box">
+<h3>Sports</h3>
+<p>Indoor and outdoor sports facilities.</p>
+</div>
+
+</section>
+
+<footer>
+<p>© 2026 ABC College of Engineering. All Rights Reserved.</p>
+</footer>
+
+</body>
+</html>

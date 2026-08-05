@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dynamic To-Do List</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,sans-serif;
+}
+
+body{
+    background:#eaf4ff;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    min-height:100vh;
+}
+
+.container{
+    width:450px;
+    background:white;
+    padding:25px;
+    border-radius:10px;
+    box-shadow:0 0 15px rgba(0,0,0,0.2);
+}
+
+h2{
+    text-align:center;
+    color:#0066cc;
+    margin-bottom:20px;
+}
+
+.input-box{
+    display:flex;
+    gap:10px;
+}
+
+input{
+    flex:1;
+    padding:10px;
+    border:1px solid #999;
+    border-radius:5px;
+}
+
+button{
+    padding:10px 15px;
+    border:none;
+    border-radius:5px;
+    color:white;
+    cursor:pointer;
+}
+
+#addBtn{
+    background:#28a745;
+}
+
+.editBtn{
+    background:#ff9800;
+}
+
+.deleteBtn{
+    background:#dc3545;
+}
+
+ul{
+    list-style:none;
+    margin-top:20px;
+}
+
+li{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    background:#f4f4f4;
+    padding:10px;
+    margin-bottom:10px;
+    border-left:5px solid #0066cc;
+    border-radius:5px;
+}
+
+.task-buttons button{
+    margin-left:5px;
+}
+</style>
+
+</head>
+<body>
+
+<div class="container">
+
+<h2>Dynamic To-Do List</h2>
+
+<div class="input-box">
+<input type="text" id="taskInput" placeholder="Enter a task">
+<button id="addBtn">Add</button>
+</div>
+
+<ul id="taskList"></ul>
+
+</div>
+
+<script>
+
+let tasks=[];
+
+const input=document.getElementById("taskInput");
+const list=document.getElementById("taskList");
+const addBtn=document.getElementById("addBtn");
+
+addBtn.addEventListener("click",addTask);
+
+function addTask(){
+
+let text=input.value.trim();
+
+if(text===""){
+alert("Please enter a task.");
+return;
+}
+
+let task={
+id:Date.now(),
+name:text
+};
+
+tasks.push(task);
+
+input.value="";
+
+displayTasks();
+
+}
+
+function displayTasks(){
+
+list.innerHTML="";
+
+tasks.forEach(function(task){
+
+let li=document.createElement("li");
+
+li.innerHTML=
+`
+<span>${task.name}</span>
+
+<div class="task-buttons">
+
+<button class="editBtn" onclick="editTask(${task.id})">Edit</button>
+
+<button class="deleteBtn" onclick="deleteTask(${task.id})">Delete</button>
+
+</div>
+`;
+
+list.appendChild(li);
+
+});
+
+}
+
+function editTask(id){
+
+let task=tasks.find(function(t){
+return t.id===id;
+});
+
+let newTask=prompt("Edit Task",task.name);
+
+if(newTask!==null && newTask.trim()!==""){
+
+task.name=newTask.trim();
+
+displayTasks();
+
+}
+
+}
+
+function deleteTask(id){
+
+tasks=tasks.filter(function(task){
+return task.id!==id;
+});
+
+displayTasks();
+
+}
+
+</script>
+
+</body>
+</html>

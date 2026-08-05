@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Debug CSS & JavaScript Application</title>
+
+<style>
+
+body{
+    font-family:Arial,sans-serif;
+    background:#e8f4ff;
+    text-align:center;
+    padding:40px;
+}
+
+.container{
+    width:400px;
+    margin:auto;
+    background:white;
+    padding:20px;
+    border-radius:10px;
+    box-shadow:0 0 10px gray;
+}
+
+h2{
+    color:#0066cc;
+}
+
+input{
+    width:90%;
+    padding:10px;
+    margin:10px;
+    border:1px solid gray;
+    border-radius:5px;
+}
+
+/* CSS Error (Students can inspect and fix)
+background should be green instead of gren */
+
+button{
+    padding:10px 20px;
+    background:gren;
+    color:white;
+    border:none;
+    border-radius:5px;
+    cursor:pointer;
+}
+
+button:hover{
+    background:#004c99;
+}
+
+#result{
+    margin-top:20px;
+    font-size:20px;
+    color:green;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h2>Debug Web Application</h2>
+
+<input type="number" id="num1" placeholder="Enter First Number">
+
+<input type="number" id="num2" placeholder="Enter Second Number">
+
+<button onclick="calculate()">Calculate Sum</button>
+
+<div id="result"></div>
+
+</div>
+
+<script>
+
+function calculate(){
+
+console.log("Calculate button clicked.");
+
+debugger;
+
+try{
+
+let a=Number(document.getElementById("num1").value);
+
+let b=Number(document.getElementById("num2").value);
+
+console.log("Value 1:",a);
+console.log("Value 2:",b);
+
+// JavaScript Error (Students can debug)
+// "totl" is incorrect variable name.
+
+let total=a+b;
+
+document.getElementById("result").innerHTML=
+"Total = "+totl;
+
+}
+
+catch(error){
+
+console.log("Error Found:",error);
+
+document.getElementById("result").innerHTML=
+"Error! Open Console (F12) to Debug.";
+
+}
+
+}
+
+</script>
+
+</body>
+</html>

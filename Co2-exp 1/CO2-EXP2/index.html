@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Student Registration Form</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, sans-serif;
+}
+
+body{
+    background:#e8f4ff;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    min-height:100vh;
+    padding:20px;
+}
+
+.container{
+    width:450px;
+    background:#fff;
+    padding:25px;
+    border-radius:10px;
+    box-shadow:0 0 15px rgba(0,0,0,0.2);
+}
+
+h2{
+    text-align:center;
+    color:#0066cc;
+    margin-bottom:20px;
+}
+
+label{
+    display:block;
+    margin-top:12px;
+    font-weight:bold;
+}
+
+input, select, textarea{
+    width:100%;
+    padding:10px;
+    margin-top:5px;
+    border:1px solid #999;
+    border-radius:5px;
+    font-size:15px;
+}
+
+input:focus,
+select:focus,
+textarea:focus{
+    border-color:#0066cc;
+    outline:none;
+}
+
+.gender{
+    margin-top:8px;
+}
+
+.gender input{
+    width:auto;
+}
+
+button{
+    width:100%;
+    padding:12px;
+    margin-top:20px;
+    background:#0066cc;
+    color:white;
+    border:none;
+    border-radius:5px;
+    font-size:16px;
+    cursor:pointer;
+}
+
+button:hover{
+    background:#004c99;
+}
+
+.error{
+    color:red;
+    font-size:13px;
+}
+
+.success{
+    color:green;
+    text-align:center;
+    margin-top:15px;
+    font-weight:bold;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h2>Student Registration Form</h2>
+
+<form id="studentForm">
+
+<label>Full Name</label>
+<input type="text" id="name">
+<div class="error" id="nameError"></div>
+
+<label>Email</label>
+<input type="text" id="email">
+<div class="error" id="emailError"></div>
+
+<label>Mobile Number</label>
+<input type="text" id="phone">
+<div class="error" id="phoneError"></div>
+
+<label>Register Number</label>
+<input type="text" id="regno">
+<div class="error" id="regError"></div>
+
+<label>Department</label>
+<select id="department">
+<option value="">Select Department</option>
+<option>Information Technology</option>
+<option>Computer Science</option>
+<option>Artificial Intelligence</option>
+<option>Electronics</option>
+</select>
+<div class="error" id="deptError"></div>
+
+<label>Gender</label>
+
+<div class="gender">
+<input type="radio" name="gender" value="Male"> Male
+<input type="radio" name="gender" value="Female"> Female
+</div>
+
+<div class="error" id="genderError"></div>
+
+<label>Address</label>
+<textarea id="address" rows="3"></textarea>
+
+<div class="error" id="addressError"></div>
+
+<button type="submit">Register</button>
+
+<div class="success" id="successMsg"></div>
+
+</form>
+
+</div>
+
+<script>
+
+document.getElementById("studentForm").addEventListener("submit", function(event){
+
+event.preventDefault();
+
+document.getElementById("successMsg").innerHTML="";
+
+let name=document.getElementById("name").value.trim();
+let email=document.getElementById("email").value.trim();
+let phone=document.getElementById("phone").value.trim();
+let reg=document.getElementById("regno").value.trim();
+let dept=document.getElementById("department").value;
+let address=document.getElementById("address").value.trim();
+
+let gender=document.querySelector('input[name="gender"]:checked');
+
+let valid=true;
+
+document.getElementById("nameError").innerHTML="";
+document.getElementById("emailError").innerHTML="";
+document.getElementById("phoneError").innerHTML="";
+document.getElementById("regError").innerHTML="";
+document.getElementById("deptError").innerHTML="";
+document.getElementById("genderError").innerHTML="";
+document.getElementById("addressError").innerHTML="";
+
+let namePattern=/^[A-Za-z ]{3,}$/;
+let emailPattern=/^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+let phonePattern=/^[0-9]{10}$/;
+let regPattern=/^[0-9]{8,12}$/;
+
+if(!namePattern.test(name)){
+document.getElementById("nameError").innerHTML="Enter a valid name.";
+valid=false;
+}
+
+if(!emailPattern.test(email)){
+document.getElementById("emailError").innerHTML="Enter a valid email.";
+valid=false;
+}
+
+if(!phonePattern.test(phone)){
+document.getElementById("phoneError").innerHTML="Enter a 10-digit mobile number.";
+valid=false;
+}
+
+if(!regPattern.test(reg)){
+document.getElementById("regError").innerHTML="Enter a valid register number.";
+valid=false;
+}
+
+if(dept==""){
+document.getElementById("deptError").innerHTML="Select a department.";
+valid=false;
+}
+
+if(gender==null){
+document.getElementById("genderError").innerHTML="Select your gender.";
+valid=false;
+}
+
+if(address.length<10){
+document.getElementById("addressError").innerHTML="Address must contain at least 10 characters.";
+valid=false;
+}
+
+if(valid){
+
+document.getElementById("successMsg").innerHTML="Student Registered Successfully!";
+
+document.getElementById("studentForm").reset();
+
+}
+
+});
+
+</script>
+
+</body>
+</html>

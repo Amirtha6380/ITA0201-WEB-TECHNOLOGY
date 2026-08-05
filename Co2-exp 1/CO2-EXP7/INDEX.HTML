@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Online Quiz Application</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,sans-serif;
+}
+
+body{
+    background:#e8f4ff;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    min-height:100vh;
+}
+
+.quiz-container{
+    width:600px;
+    background:white;
+    padding:25px;
+    border-radius:10px;
+    box-shadow:0 0 15px rgba(0,0,0,0.2);
+}
+
+h2{
+    text-align:center;
+    color:#0066cc;
+    margin-bottom:20px;
+}
+
+.question-card{
+    background:#f8f9fa;
+    border:2px solid #0066cc;
+    border-radius:8px;
+    padding:15px;
+    margin-bottom:20px;
+}
+
+.question{
+    font-weight:bold;
+    margin-bottom:10px;
+}
+
+.options label{
+    display:block;
+    margin:8px 0;
+}
+
+button{
+    width:100%;
+    padding:12px;
+    background:#0066cc;
+    color:white;
+    border:none;
+    border-radius:5px;
+    cursor:pointer;
+    font-size:16px;
+}
+
+button:hover{
+    background:#004a99;
+}
+
+#result{
+    margin-top:20px;
+    text-align:center;
+    font-size:20px;
+    font-weight:bold;
+    color:green;
+}
+</style>
+
+</head>
+<body>
+
+<div class="quiz-container">
+
+<h2>Online Quiz Application</h2>
+
+<form id="quizForm"></form>
+
+<button id="submitBtn">Submit Quiz</button>
+
+<div id="result"></div>
+
+</div>
+
+<script>
+
+const questions=[
+
+{
+question:"1. HTML stands for?",
+options:[
+"Hyper Text Markup Language",
+"High Text Machine Language",
+"Hyper Tool Multi Language",
+"Home Text Markup Language"
+],
+answer:"Hyper Text Markup Language"
+},
+
+{
+question:"2. Which language is used for styling web pages?",
+options:[
+"Python",
+"CSS",
+"C++",
+"Java"
+],
+answer:"CSS"
+},
+
+{
+question:"3. Which JavaScript method is used to select an element by ID?",
+options:[
+"querySelector()",
+"getElementsByClassName()",
+"getElementById()",
+"getElementsByTagName()"
+],
+answer:"getElementById()"
+}
+
+];
+
+const form=document.getElementById("quizForm");
+
+questions.forEach(function(q,index){
+
+let card=document.createElement("div");
+card.className="question-card";
+
+let html="<div class='question'>"+q.question+"</div>";
+
+q.options.forEach(function(option){
+
+html+="<div class='options'>";
+html+="<label>";
+html+="<input type='radio' name='q"+index+"' value='"+option+"'> ";
+html+=option;
+html+="</label>";
+html+="</div>";
+
+});
+
+card.innerHTML=html;
+
+form.appendChild(card);
+
+});
+
+document.getElementById("submitBtn").addEventListener("click",function(){
+
+let score=0;
+
+questions.forEach(function(q,index){
+
+let selected=document.querySelector("input[name='q"+index+"']:checked");
+
+if(selected && selected.value===q.answer){
+score++;
+}
+
+});
+
+document.getElementById("result").innerHTML=
+"Your Score: "+score+" / "+questions.length;
+
+});
+
+</script>
+
+</body>
+</html>

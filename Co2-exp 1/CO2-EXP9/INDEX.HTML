@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Product Shopping Cart & Billing System</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,sans-serif;
+}
+
+body{
+    background:#eef6ff;
+    padding:30px;
+}
+
+.container{
+    width:700px;
+    margin:auto;
+    background:#fff;
+    padding:25px;
+    border-radius:10px;
+    box-shadow:0 0 10px rgba(0,0,0,0.2);
+}
+
+h2{
+    text-align:center;
+    color:#0066cc;
+    margin-bottom:20px;
+}
+
+label{
+    display:block;
+    margin-top:10px;
+    font-weight:bold;
+}
+
+select,input{
+    width:100%;
+    padding:10px;
+    margin-top:5px;
+    border:1px solid #999;
+    border-radius:5px;
+}
+
+button{
+    width:100%;
+    padding:12px;
+    margin-top:20px;
+    background:#0066cc;
+    color:white;
+    border:none;
+    border-radius:5px;
+    cursor:pointer;
+    font-size:16px;
+}
+
+button:hover{
+    background:#004c99;
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+    margin-top:25px;
+}
+
+table,th,td{
+    border:1px solid black;
+}
+
+th{
+    background:#0066cc;
+    color:white;
+}
+
+th,td{
+    padding:10px;
+    text-align:center;
+}
+
+.total{
+    margin-top:20px;
+    font-size:18px;
+    font-weight:bold;
+    color:green;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h2>Product Shopping Cart & Billing System</h2>
+
+<label>Select Product</label>
+
+<select id="product">
+<option value="500">Laptop - ₹500</option>
+<option value="300">Headphone - ₹300</option>
+<option value="100">Mouse - ₹100</option>
+<option value="50">Keyboard - ₹50</option>
+</select>
+
+<label>Quantity</label>
+
+<input type="number" id="qty" min="1" value="1">
+
+<button onclick="addProduct()">Add to Cart</button>
+
+<table>
+
+<thead>
+<tr>
+<th>Product</th>
+<th>Price</th>
+<th>Quantity</th>
+<th>Amount</th>
+</tr>
+</thead>
+
+<tbody id="cartTable">
+</tbody>
+
+</table>
+
+<div class="total" id="bill"></div>
+
+</div>
+
+<script>
+
+let cart=[];
+
+function addProduct(){
+
+let product=document.getElementById("product");
+
+let name=product.options[product.selectedIndex].text.split(" - ")[0];
+
+let price=Number(product.value);
+
+let quantity=Number(document.getElementById("qty").value);
+
+let amount=price*quantity;
+
+let item={
+name:name,
+price:price,
+quantity:quantity,
+amount:amount
+};
+
+cart.push(item);
+
+displayCart();
+
+}
+
+function displayCart(){
+
+let table=document.getElementById("cartTable");
+
+table.innerHTML="";
+
+let subtotal=0;
+
+cart.forEach(function(item){
+
+subtotal+=item.amount;
+
+table.innerHTML+=
+"<tr>"+
+"<td>"+item.name+"</td>"+
+"<td>₹"+item.price+"</td>"+
+"<td>"+item.quantity+"</td>"+
+"<td>₹"+item.amount+"</td>"+
+"</tr>";
+
+});
+
+let discount=0;
+
+if(subtotal>=1000){
+discount=subtotal*0.10;
+}
+
+let taxable=subtotal-discount;
+
+let tax=taxable*0.05;
+
+let total=taxable+tax;
+
+document.getElementById("bill").innerHTML=
+"Subtotal : ₹"+subtotal+
+"<br>Discount (10%) : ₹"+discount.toFixed(2)+
+"<br>GST (5%) : ₹"+tax.toFixed(2)+
+"<br><br><b>Grand Total : ₹"+total.toFixed(2)+"</b>";
+
+}
+
+</script>
+
+</body>
+</html>
