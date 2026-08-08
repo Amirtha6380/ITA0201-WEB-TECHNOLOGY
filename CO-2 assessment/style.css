@@ -1,0 +1,1297 @@
+* =====================================================
+   UNIVERSITY EVENT REGISTRATION PORTAL
+   EXTERNAL CSS
+   ===================================================== */
+
+
+/* ================= BASIC RESET ================= */
+
+* {
+    box-sizing: content-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #172b42;
+    background-color: #f5f8fc;
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+h1,
+h2,
+h3,
+p {
+    overflow-wrap: break-word;
+}
+
+h1,
+h2,
+h3 {
+    line-height: 1.2;
+}
+
+a {
+    text-decoration: none;
+}
+
+
+/* ================= HEADER ================= */
+
+.header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+
+    background-color: white;
+
+    border-bottom: 1px solid #dce4ef;
+
+    box-shadow:
+        0 3px 15px rgba(0, 0, 0, 0.08);
+}
+
+
+.navbar {
+    width: 92%;
+    max-width: 1180px;
+
+    min-height: 75px;
+
+    margin: auto;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 20px;
+}
+
+
+/* Group selector */
+
+.logo,
+.nav-links {
+    display: flex;
+    align-items: center;
+}
+
+
+.logo {
+    gap: 10px;
+}
+
+
+/* Logo box */
+
+.logo-box {
+    width: 42px;
+    height: 42px;
+
+    display: grid;
+    place-items: center;
+
+    border-radius: 12px;
+
+    color: white;
+
+    background:
+        linear-gradient(
+            135deg,
+            #0d4f87,
+            #15a5a2
+        );
+
+    font-size: 20px;
+    font-weight: bold;
+
+    box-shadow:
+        0 6px 15px
+        rgba(13, 79, 135, 0.25);
+}
+
+
+.logo strong,
+.logo small {
+    display: block;
+}
+
+.logo strong {
+    font-size: 15px;
+}
+
+.logo small {
+    color: #718096;
+    font-size: 11px;
+}
+
+
+/* Descendant selector */
+
+.nav-links a {
+    padding: 9px 13px;
+
+    border-radius: 8px;
+
+    color: #52657d;
+
+    font-size: 14px;
+    font-weight: bold;
+
+    transition:
+        background-color 0.25s,
+        color 0.25s,
+        transform 0.25s;
+}
+
+
+/* Pseudo class */
+
+.nav-links a:hover,
+.nav-links a:focus {
+    color: #0d5c8f;
+
+    background-color: #eaf4fb;
+
+    transform: translateY(-2px);
+
+    outline: none;
+}
+
+
+/* ================= HERO ================= */
+
+.hero {
+    width: 82%;
+    max-width: 1180px;
+
+    margin: 35px auto 0;
+
+    padding: 75px 5%;
+
+    position: relative;
+
+    overflow: hidden;
+
+    display: grid;
+
+    grid-template-columns:
+        1.35fr 0.75fr;
+
+    align-items: center;
+
+    gap: 45px;
+
+    border-radius: 28px;
+
+    color: white;
+
+    background:
+        radial-gradient(
+            circle at 80% 20%,
+            rgba(80, 220, 215, 0.28),
+            transparent 30%
+        ),
+        linear-gradient(
+            135deg,
+            #092d52,
+            #0d5c8f,
+            #087f82
+        );
+
+    box-shadow:
+        0 20px 50px
+        rgba(13, 79, 135, 0.2);
+}
+
+
+.hero::after {
+    content: "";
+
+    position: absolute;
+
+    width: 230px;
+    height: 230px;
+
+    right: -90px;
+    bottom: -100px;
+
+    border:
+        2px solid
+        rgba(255, 255, 255, 0.15);
+
+    border-radius: 50%;
+}
+
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+}
+
+
+.eyebrow {
+    margin-bottom: 10px;
+
+    color: #0b8190;
+
+    font-size: 12px;
+
+    font-weight: bold;
+
+    letter-spacing: 2px;
+}
+
+
+.hero .eyebrow {
+    color: #8fe8e4;
+}
+
+
+.hero h1 {
+    margin-bottom: 20px;
+
+    font-size:
+        clamp(42px, 6vw, 78px);
+
+    letter-spacing: -3px;
+}
+
+
+.hero h1 span {
+    color: #7ce5de;
+}
+
+
+.hero-description {
+    max-width: 650px;
+
+    color: #dcecf8;
+
+    font-size: 17px;
+
+    margin-bottom: 30px;
+}
+
+
+/* ================= BUTTONS ================= */
+
+.hero-buttons {
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 12px;
+}
+
+
+.btn {
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    min-height: 45px;
+
+    padding:
+        10px 20px;
+
+    border-radius: 10px;
+
+    border: 2px solid transparent;
+
+    font-weight: bold;
+
+    transition:
+        transform 0.25s,
+        box-shadow 0.25s,
+        background-color 0.25s;
+}
+
+
+.btn:hover {
+    transform: translateY(-3px);
+}
+
+
+.primary-btn {
+    color: #092d52;
+
+    background-color: white;
+
+    box-shadow:
+        0 8px 18px
+        rgba(0, 0, 0, 0.15);
+}
+
+
+.secondary-btn {
+    color: white;
+
+    border-color:
+        rgba(255, 255, 255, 0.5);
+
+    background-color:
+        rgba(255, 255, 255, 0.08);
+}
+
+
+/* ================= STATISTICS ================= */
+
+.statistics {
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 35px;
+
+    margin-top: 40px;
+}
+
+
+.statistics strong,
+.statistics span {
+    display: block;
+}
+
+
+.statistics strong {
+    font-size: 24px;
+}
+
+
+.statistics span {
+    color: #c5dbe9;
+
+    font-size: 12px;
+}
+
+
+/* ================= HERO CARD ================= */
+
+.hero-card {
+    position: relative;
+    z-index: 2;
+
+    padding: 30px;
+
+    border-radius: 20px;
+
+    border:
+        1px solid
+        rgba(255, 255, 255, 0.3);
+
+    background:
+        rgba(255, 255, 255, 0.12);
+
+    box-shadow:
+        0 18px 35px
+        rgba(0, 0, 0, 0.12);
+}
+
+
+.star {
+    display: grid;
+
+    width: 48px;
+    height: 48px;
+
+    place-items: center;
+
+    margin-bottom: 20px;
+
+    border-radius: 14px;
+
+    color: #075c62;
+
+    background-color: #9de8e2;
+
+    font-size: 23px;
+}
+
+
+.hero-card > p {
+    color: #d7e8f3;
+}
+
+
+.hero-card h2 {
+    font-size: 28px;
+}
+
+
+.status {
+    position: absolute;
+
+    top: 20px;
+    right: 20px;
+
+    padding: 5px 10px;
+
+    border-radius: 50px;
+
+    color: #073c35;
+
+    background-color: #9de8e2;
+
+    font-size: 11px;
+
+    font-weight: bold;
+}
+
+
+/* ================= SECTION ================= */
+
+.section {
+    width: 92%;
+    max-width: 1180px;
+
+    margin: 90px auto;
+}
+
+
+.section-heading {
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: end;
+
+    gap: 30px;
+
+    margin-bottom: 30px;
+}
+
+
+.section-heading h2,
+.registration-info h2,
+.about h2 {
+    color: #132d4b;
+
+    font-size:
+        clamp(30px, 4vw, 45px);
+}
+
+
+.section-heading > p {
+    max-width: 400px;
+
+    color: #6b7890;
+
+    text-align: right;
+}
+
+
+/* ================= EVENT GRID ================= */
+
+
+/* CSS Grid */
+
+.event-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, minmax(0, 1fr));
+
+    gap: 20px;
+}
+
+
+.event-card {
+    margin: 8px;
+
+    overflow: hidden;
+
+    border:
+        1px solid #dfe7f0;
+
+    border-radius: 18px;
+
+    background-color: white;
+
+    box-shadow:
+        0 10px 25px
+        rgba(34, 54, 78, 0.07);
+
+    transition:
+        transform 0.25s,
+        box-shadow 0.25s;
+}
+
+
+.event-card:hover {
+    transform: translateY(-6px);
+
+    box-shadow:
+        0 18px 34px
+        rgba(34, 54, 78, 0.15);
+}
+
+
+/* ================= EVENT IMAGES ================= */
+
+.event-image {
+    height: 150px;
+
+    position: relative;
+
+    display: flex;
+
+    align-items: flex-end;
+
+    justify-content: space-between;
+
+    padding: 18px;
+
+    overflow: hidden;
+}
+
+
+.event-image::before {
+    content: "";
+
+    position: absolute;
+
+    width: 120px;
+    height: 120px;
+
+    top: -45px;
+    right: -30px;
+
+    border:
+        2px solid
+        rgba(255, 255, 255, 0.25);
+
+    border-radius: 50%;
+}
+
+
+/* Different event categories */
+
+.technical {
+    background:
+        linear-gradient(
+            135deg,
+            #164e83,
+            #16a5a0
+        );
+}
+
+
+.hackathon {
+    background:
+        linear-gradient(
+            135deg,
+            #522f87,
+            #a0449b
+        );
+}
+
+
+.cultural {
+    background:
+        linear-gradient(
+            135deg,
+            #8a4b27,
+            #df8b3c
+        );
+}
+
+
+.placement {
+    background:
+        linear-gradient(
+            135deg,
+            #315b42,
+            #5da765
+        );
+}
+
+
+.category {
+    position: relative;
+    z-index: 1;
+
+    padding: 5px 9px;
+
+    border-radius: 50px;
+
+    color: #102b45;
+
+    background-color:
+        rgba(255, 255, 255, 0.9);
+
+    font-size: 11px;
+
+    font-weight: bold;
+}
+
+
+.event-symbol {
+    position: relative;
+    z-index: 1;
+
+    color: white;
+
+    font-size: 35px;
+
+    font-weight: bold;
+}
+
+
+/* ================= EVENT CONTENT ================= */
+
+.event-content {
+    padding: 22px;
+}
+
+
+.event-type {
+    color: #0b8190;
+
+    font-size: 11px;
+
+    font-weight: bold;
+
+    letter-spacing: 1px;
+}
+
+
+.event-content h3 {
+    color: #183b60;
+
+    font-size: 19px;
+
+    min-height: 48px;
+}
+
+
+.event-content ul {
+    padding: 0;
+
+    list-style: none;
+
+    color: #62728a;
+
+    font-size: 13px;
+}
+
+
+.event-content li {
+    margin-bottom: 5px;
+}
+
+
+.event-content > p {
+    color: #66758b;
+
+    font-size: 13px;
+}
+
+
+.event-footer {
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    gap: 10px;
+
+    padding-top: 15px;
+
+    border-top:
+        1px solid #e7edf4;
+}
+
+
+.available {
+    color: #2f7653;
+
+    font-size: 11px;
+
+    font-weight: bold;
+}
+
+
+.event-footer a {
+    color: #0d5c8f;
+
+    font-size: 12px;
+
+    font-weight: bold;
+}
+
+
+.event-footer a:hover {
+    text-decoration: underline;
+}
+
+
+/* ================= REGISTRATION ================= */
+
+.registration {
+    width: 92%;
+    max-width: 1180px;
+
+    margin: 0 auto 90px;
+
+    display: grid;
+
+    grid-template-columns:
+        0.75fr 1.25fr;
+
+    gap: 50px;
+}
+
+
+.registration-info {
+    padding-top: 25px;
+}
+
+
+.registration-info > p {
+    color: #65758c;
+}
+
+
+.info-box {
+    margin-top: 25px;
+
+    padding: 18px;
+
+    border-left:
+        4px solid #16a5a0;
+
+    border-radius: 10px;
+
+    background-color: #eaf8f7;
+}
+
+
+.info-box strong {
+    color: #075c62;
+}
+
+
+.info-box p {
+    color: #557078;
+
+    font-size: 13px;
+}
+
+
+/* ================= FORM ================= */
+
+.registration-form {
+    padding: 35px;
+
+    border:
+        1px solid #dce5ef;
+
+    border-radius: 20px;
+
+    background-color: white;
+
+    box-shadow:
+        0 18px 40px
+        rgba(34, 54, 78, 0.08);
+}
+
+
+.form-heading {
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: baseline;
+
+    margin-bottom: 25px;
+}
+
+
+.form-heading h3 {
+    color: #173d62;
+}
+
+
+.form-heading span {
+    color: #7a8798;
+
+    font-size: 11px;
+}
+
+
+/* CSS Grid */
+
+.form-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, minmax(0, 1fr));
+
+    gap: 18px;
+}
+
+
+.form-group {
+    min-width: 0;
+}
+
+
+.form-group.full {
+    grid-column: 1 / -1;
+}
+
+
+.form-group label:not(.checkbox) {
+    display: block;
+
+    margin-bottom: 7px;
+
+    color: #30455e;
+
+    font-size: 13px;
+
+    font-weight: bold;
+}
+
+
+/* Attribute selector */
+
+input[type="text"] {
+    background-color: #fbfcfe;
+}
+
+
+input,
+select {
+    width: 100%;
+
+    min-height: 42px;
+
+    padding:
+        10px 12px;
+
+    border:
+        1px solid #ccd8e5;
+
+    border-radius: 9px;
+
+    color: #20364f;
+
+    background-color: #fbfcfe;
+
+    outline: none;
+
+    transition:
+        border-color 0.2s,
+        box-shadow 0.2s;
+}
+
+
+/* Focus pseudo-class */
+
+input:focus,
+select:focus {
+    border-color: #0d8b91;
+
+    box-shadow:
+        0 0 0 3px
+        rgba(13, 139, 145, 0.12);
+}
+
+
+input::placeholder {
+    color: #9aa7b7;
+}
+
+
+/* Checkbox */
+
+.checkbox {
+    display: flex;
+
+    gap: 10px;
+
+    align-items: flex-start;
+
+    color: #607086;
+
+    font-size: 13px;
+
+    cursor: pointer;
+}
+
+
+.checkbox input {
+    width: 17px;
+
+    min-height: 17px;
+
+    accent-color: #0d8190;
+}
+
+
+/* Submit */
+
+.submit-btn {
+    width: 100%;
+
+    margin-top: 22px;
+
+    padding: 13px;
+
+    border: none;
+
+    border-radius: 10px;
+
+    color: white;
+
+    background:
+        linear-gradient(
+            135deg,
+            #0d4f87,
+            #0b8b8d
+        );
+
+    cursor: pointer;
+
+    font-weight: bold;
+
+    transition:
+        transform 0.25s,
+        box-shadow 0.25s;
+}
+
+
+.submit-btn:hover {
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 12px 25px
+        rgba(13, 79, 135, 0.25);
+}
+
+
+/* ================= ABOUT ================= */
+
+.about {
+    display: grid;
+
+    grid-template-columns:
+        0.9fr 1.1fr;
+
+    gap: 60px;
+
+    align-items: center;
+
+    padding: 55px;
+
+    border-radius: 22px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #e9f4fb,
+            #e9f8f6
+        );
+}
+
+
+.about > p {
+    color: #5c6d82;
+
+    font-size: 16px;
+}
+
+
+/* ================= FOOTER ================= */
+
+footer {
+    margin-top: 30px;
+
+    padding:
+        50px 4% 20px;
+
+    color: #c9d8e6;
+
+    background-color: #102a43;
+}
+
+
+.footer-grid {
+    width: 100%;
+    max-width: 1180px;
+
+    margin: auto;
+
+    display: grid;
+
+    grid-template-columns:
+        1.5fr 1fr 1fr;
+
+    gap: 35px;
+}
+
+
+.footer-grid h3 {
+    color: white;
+
+    font-size: 14px;
+}
+
+
+.footer-grid p,
+.footer-grid a {
+    font-size: 13px;
+}
+
+
+.footer-grid a {
+    display: block;
+
+    color: #c9d8e6;
+
+    margin: 5px 0;
+}
+
+
+.footer-grid a:hover {
+    color: white;
+
+    text-decoration: underline;
+}
+
+
+.copyright {
+    max-width: 1180px;
+
+    margin: 30px auto 0;
+
+    padding-top: 18px;
+
+    border-top:
+        1px solid
+        rgba(255, 255, 255, 0.12);
+
+    color: #91a9bc;
+
+    font-size: 12px;
+}
+
+
+/* ================= FIXED BUTTON ================= */
+
+.help-button {
+    position: fixed;
+
+    right: 22px;
+    bottom: 22px;
+
+    z-index: 1200;
+
+    width: 48px;
+    height: 48px;
+
+    display: grid;
+
+    place-items: center;
+
+    border-radius: 50%;
+
+    color: white;
+
+    background-color: #0d8190;
+
+    box-shadow:
+        0 10px 25px
+        rgba(13, 129, 144, 0.3);
+
+    font-size: 20px;
+
+    font-weight: bold;
+
+    transition:
+        transform 0.25s;
+}
+
+
+.help-button:hover {
+    transform: scale(1.1);
+}
+
+
+/* ================= CHILD SELECTOR ================= */
+
+.form-grid > .form-group {
+    min-width: 0;
+}
+
+
+/* ================= RESPONSIVE DESIGN ================= */
+
+
+/* Tablet */
+
+@media (max-width: 1000px) {
+
+    .event-grid {
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+    }
+
+
+    .hero {
+        grid-template-columns: 1fr;
+    }
+
+
+    .registration {
+        grid-template-columns: 1fr;
+    }
+
+}
+
+
+/* Mobile */
+
+@media (max-width: 720px) {
+
+    .navbar {
+        padding: 12px 0;
+
+        flex-direction: column;
+
+        align-items: flex-start;
+    }
+
+
+    .nav-links {
+        width: 100%;
+
+        overflow-x: auto;
+
+        flex-wrap: nowrap;
+
+        justify-content: flex-start;
+    }
+
+
+    .hero {
+        width: 84%;
+
+        padding: 45px 8%;
+
+        margin-top: 20px;
+
+        border-radius: 20px;
+    }
+
+
+    .hero h1 {
+        font-size: 42px;
+    }
+
+
+    .hero-buttons .btn {
+        width: 100%;
+    }
+
+
+    .event-grid {
+        grid-template-columns: 1fr;
+    }
+
+
+    .event-card {
+        margin: 0;
+    }
+
+
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+
+
+    .form-group.full {
+        grid-column: auto;
+    }
+
+
+    .form-heading {
+        display: block;
+    }
+
+
+    .about {
+        grid-template-columns: 1fr;
+
+        gap: 20px;
+
+        padding: 30px 24px;
+    }
+
+
+    .footer-grid {
+        grid-template-columns: 1fr;
+    }
+
+}
+
+
+/* Approximately 375px */
+
+@media (max-width: 430px) {
+
+    .hero {
+        width: 84%;
+
+        padding:
+            40px 8%;
+    }
+
+
+    .hero h1 {
+        font-size: 38px;
+    }
+
+
+    .statistics {
+        display: grid;
+
+        grid-template-columns:
+            repeat(3, 1fr);
+
+        gap: 10px;
+    }
+
+
+    .statistics strong {
+        font-size: 19px;
+    }
+
+
+    .statistics span {
+        font-size: 10px;
+    }
+
+
+    .registration-form {
+        padding: 20px 16px;
+    }
+
+
+    .help-button {
+        right: 15px;
+        bottom: 15px;
+    }
+
+}
