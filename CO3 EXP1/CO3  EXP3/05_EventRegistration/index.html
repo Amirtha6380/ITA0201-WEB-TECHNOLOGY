@@ -1,0 +1,435 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Interactive Event Registration</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #00b4db, #0083b0);
+            min-height: 100vh;
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 850px;
+            margin: auto;
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+        }
+
+        h1 {
+            text-align: center;
+            color: #006064;
+            margin-bottom: 8px;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 25px;
+        }
+
+        .form-box {
+            background: #e0f7fa;
+            padding: 25px;
+            border-radius: 15px;
+            border-left: 6px solid #00838f;
+        }
+
+        label {
+            display: block;
+            margin-top: 15px;
+            margin-bottom: 6px;
+            font-weight: bold;
+            color: #006064;
+        }
+
+        input,
+        select {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #80deea;
+            border-radius: 8px;
+            font-size: 16px;
+            outline: none;
+        }
+
+        input:focus,
+        select:focus {
+            border-color: #00838f;
+            background: #ffffff;
+        }
+
+        .register-btn {
+            width: 100%;
+            margin-top: 25px;
+            padding: 14px;
+            border: none;
+            border-radius: 8px;
+            background: #00838f;
+            color: white;
+            font-size: 17px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .register-btn:hover {
+            background: #006064;
+        }
+
+        .register-btn.active {
+            transform: scale(1.03);
+        }
+
+        #message {
+            display: none;
+            margin-top: 20px;
+            padding: 15px;
+            background: #c8e6c9;
+            color: #256029;
+            border-radius: 10px;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        .preview {
+            margin-top: 25px;
+            padding: 20px;
+            background: #fff3e0;
+            border-radius: 15px;
+            border-left: 6px solid #ff9800;
+        }
+
+        .preview h2 {
+            color: #e65100;
+            margin-top: 0;
+        }
+
+        #namePreview {
+            font-size: 18px;
+            font-weight: bold;
+            color: #006064;
+        }
+
+        #eventPreview {
+            color: #444;
+        }
+
+        .event-info {
+            margin-top: 25px;
+            padding: 18px;
+            background: #f3e5f5;
+            border-radius: 12px;
+            text-align: center;
+        }
+
+        .event-info h3 {
+            color: #6a1b9a;
+        }
+
+        #status {
+            text-align: center;
+            margin-top: 15px;
+            color: #777;
+            font-style: italic;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>🎉 Event Registration</h1>
+
+        <p class="subtitle">
+            Interactive Event Registration using JavaScript Events
+        </p>
+
+        <div class="form-box">
+
+            <form id="registrationForm">
+
+                <label for="studentName">
+                    Student Name
+                </label>
+
+                <input
+                    type="text"
+                    id="studentName"
+                    placeholder="Enter your name"
+                >
+
+
+                <label for="registerNumber">
+                    Register Number
+                </label>
+
+                <input
+                    type="text"
+                    id="registerNumber"
+                    placeholder="Enter register number"
+                >
+
+
+                <label for="event">
+                    Select Event
+                </label>
+
+                <select id="event">
+                    <option value="">-- Select Event --</option>
+                    <option value="Technical Symposium">
+                        Technical Symposium
+                    </option>
+                    <option value="Web Development Workshop">
+                        Web Development Workshop
+                    </option>
+                    <option value="Coding Competition">
+                        Coding Competition
+                    </option>
+                    <option value="Project Expo">
+                        Project Expo
+                    </option>
+                </select>
+
+
+                <button
+                    type="submit"
+                    class="register-btn"
+                    id="registerButton"
+                    onclick="buttonClicked()"
+                >
+                    🎟️ Register Now
+                </button>
+
+            </form>
+
+        </div>
+
+
+        <!-- Live Preview -->
+        <div class="preview">
+
+            <h2>👀 Live Preview</h2>
+
+            <p id="namePreview">
+                Student Name will appear here
+            </p>
+
+            <p id="eventPreview">
+                Select an event to see it here
+            </p>
+
+        </div>
+
+
+        <!-- Event Information -->
+        <div class="event-info">
+
+            <h3>📢 Event Information</h3>
+
+            <p>
+                Please enter your details and select an event.
+            </p>
+
+            <p id="status">
+                Status: Waiting for registration...
+            </p>
+
+        </div>
+
+
+        <!-- Success Message -->
+        <div id="message">
+            ✅ Registration Successful!
+        </div>
+
+    </div>
+
+
+    <script>
+
+        // Get elements
+        const nameInput =
+            document.getElementById("studentName");
+
+        const registerInput =
+            document.getElementById("registerNumber");
+
+        const eventSelect =
+            document.getElementById("event");
+
+        const form =
+            document.getElementById("registrationForm");
+
+        const button =
+            document.getElementById("registerButton");
+
+        const message =
+            document.getElementById("message");
+
+        const namePreview =
+            document.getElementById("namePreview");
+
+        const eventPreview =
+            document.getElementById("eventPreview");
+
+        const status =
+            document.getElementById("status");
+
+
+        // ==========================================
+        // 1. onclick - Intrinsic Event Handling
+        // ==========================================
+
+        function buttonClicked() {
+
+            status.textContent =
+                "Status: Register button clicked!";
+        }
+
+
+        // ==========================================
+        // 2. input Event
+        // ==========================================
+
+        nameInput.addEventListener("input", function () {
+
+            if (nameInput.value === "") {
+
+                namePreview.textContent =
+                    "Student Name will appear here";
+
+            } else {
+
+                namePreview.textContent =
+                    "Student Name: " + nameInput.value;
+            }
+
+        });
+
+
+        // ==========================================
+        // 3. change Event
+        // ==========================================
+
+        eventSelect.addEventListener("change", function () {
+
+            if (eventSelect.value === "") {
+
+                eventPreview.textContent =
+                    "Select an event to see it here";
+
+            } else {
+
+                eventPreview.textContent =
+                    "Selected Event: " + eventSelect.value;
+            }
+
+        });
+
+
+        // ==========================================
+        // 4. focus Event
+        // ==========================================
+
+        nameInput.addEventListener("focus", function () {
+
+            nameInput.style.backgroundColor =
+                "#e0f7fa";
+
+            status.textContent =
+                "Status: Student Name field is focused.";
+
+        });
+
+
+        // ==========================================
+        // 5. blur Event
+        // ==========================================
+
+        nameInput.addEventListener("blur", function () {
+
+            nameInput.style.backgroundColor =
+                "white";
+
+            status.textContent =
+                "Status: Student Name field lost focus.";
+
+        });
+
+
+        // ==========================================
+        // 6. mouseover Event
+        // ==========================================
+
+        button.addEventListener("mouseover", function () {
+
+            button.classList.add("active");
+
+            status.textContent =
+                "Status: Mouse is over the Register button.";
+
+        });
+
+
+        // ==========================================
+        // 7. mouseout Event
+        // ==========================================
+
+        button.addEventListener("mouseout", function () {
+
+            button.classList.remove("active");
+
+            status.textContent =
+                "Status: Mouse left the Register button.";
+
+        });
+
+
+        // ==========================================
+        // 8. submit Event
+        // ==========================================
+
+        form.addEventListener("submit", function (event) {
+
+            event.preventDefault();
+
+            if (
+                nameInput.value === "" ||
+                registerInput.value === "" ||
+                eventSelect.value === ""
+            ) {
+
+                alert("Please fill all the fields!");
+
+                return;
+            }
+
+            message.style.display = "block";
+
+            status.textContent =
+                "Status: Registration completed successfully!";
+
+        });
+
+
+    </script>
+
+</body>
+
+</html>
+```

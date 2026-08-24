@@ -1,0 +1,335 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Student Registration List</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            min-height: 100vh;
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 850px;
+            margin: auto;
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+        }
+
+        h1 {
+            text-align: center;
+            color: #4a148c;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 25px;
+        }
+
+        .form-box {
+            background: #f3e5f5;
+            padding: 20px;
+            border-radius: 15px;
+            margin-bottom: 25px;
+        }
+
+        label {
+            display: block;
+            margin-top: 12px;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #4a148c;
+        }
+
+        input,
+        select {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #ce93d8;
+            border-radius: 8px;
+            font-size: 16px;
+            outline: none;
+        }
+
+        input:focus,
+        select:focus {
+            border-color: #7b1fa2;
+        }
+
+        .add-btn {
+            width: 100%;
+            margin-top: 20px;
+            padding: 13px;
+            border: none;
+            border-radius: 8px;
+            background: #7b1fa2;
+            color: white;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .add-btn:hover {
+            background: #4a148c;
+        }
+
+        h2 {
+            color: #4a148c;
+            border-bottom: 2px solid #ce93d8;
+            padding-bottom: 10px;
+        }
+
+        #studentList {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .student-card {
+            background: linear-gradient(135deg, #e1f5fe, #f3e5f5);
+            border-left: 6px solid #7b1fa2;
+            padding: 18px;
+            border-radius: 12px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .student-info h3 {
+            margin: 0 0 8px 0;
+            color: #4a148c;
+        }
+
+        .student-info p {
+            margin: 5px 0;
+            color: #333;
+        }
+
+        .remove-btn {
+            background: #e53935;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 7px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .remove-btn:hover {
+            background: #b71c1c;
+        }
+
+        .clear-btn {
+            display: block;
+            margin: 25px auto 0;
+            padding: 12px 25px;
+            background: #ff9800;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 15px;
+            font-weight: bold;
+        }
+
+        .clear-btn:hover {
+            background: #e65100;
+        }
+
+        #count {
+            text-align: center;
+            color: #7b1fa2;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>🎓 Student Registration</h1>
+
+        <p class="subtitle">
+            Add and manage student records dynamically using DOM
+        </p>
+
+        <!-- Registration Form -->
+        <div class="form-box">
+
+            <label for="studentName">Student Name</label>
+            <input
+                type="text"
+                id="studentName"
+                placeholder="Enter student name"
+            >
+
+            <label for="registerNumber">Register Number</label>
+            <input
+                type="text"
+                id="registerNumber"
+                placeholder="Enter register number"
+            >
+
+            <label for="department">Department</label>
+            <select id="department">
+                <option value="">Select Department</option>
+                <option value="Computer Science">Computer Science</option>
+                <option value="Information Technology">Information Technology</option>
+                <option value="Electronics and Communication">Electronics and Communication</option>
+                <option value="Electrical and Electronics">Electrical and Electronics</option>
+                <option value="Mechanical Engineering">Mechanical Engineering</option>
+            </select>
+
+            <button class="add-btn" onclick="addStudent()">
+                ➕ Add Student
+            </button>
+
+        </div>
+
+        <!-- Student List -->
+        <h2>📋 Registered Students</h2>
+
+        <div id="studentList">
+
+            <!-- Student records will be added here dynamically -->
+
+        </div>
+
+        <p id="count">Total Students: 0</p>
+
+        <button class="clear-btn" onclick="clearAll()">
+            🗑️ Clear All
+        </button>
+
+    </div>
+
+
+    <script>
+
+        // Function to add a student
+        function addStudent() {
+
+            // Get values from input fields
+            const name = document.getElementById("studentName").value.trim();
+            const registerNumber =
+                document.getElementById("registerNumber").value.trim();
+            const department =
+                document.getElementById("department").value;
+
+            // Check whether all fields are filled
+            if (name === "" || registerNumber === "" || department === "") {
+                alert("Please fill all the fields!");
+                return;
+            }
+
+            // Create the main student card
+            const studentCard = document.createElement("div");
+            studentCard.classList.add("student-card");
+
+            // Create student information section
+            const studentInfo = document.createElement("div");
+            studentInfo.classList.add("student-info");
+
+            // Create student name
+            const studentName = document.createElement("h3");
+            studentName.textContent = "👤 " + name;
+
+            // Create register number
+            const studentRegister = document.createElement("p");
+            studentRegister.textContent =
+                "Register Number: " + registerNumber;
+
+            // Create department
+            const studentDepartment = document.createElement("p");
+            studentDepartment.textContent =
+                "Department: " + department;
+
+            // Add information to studentInfo
+            studentInfo.appendChild(studentName);
+            studentInfo.appendChild(studentRegister);
+            studentInfo.appendChild(studentDepartment);
+
+            // Create Remove button
+            const removeButton = document.createElement("button");
+            removeButton.textContent = "Remove";
+            removeButton.classList.add("remove-btn");
+
+            // Remove student when button is clicked
+            removeButton.onclick = function () {
+
+                // parentElement is used to find the student card
+                removeButton.parentElement.remove();
+
+                updateCount();
+            };
+
+            // Add information and button to student card
+            studentCard.appendChild(studentInfo);
+            studentCard.appendChild(removeButton);
+
+            // Add student card to student list
+            document.getElementById("studentList")
+                .appendChild(studentCard);
+
+            // Clear input fields
+            document.getElementById("studentName").value = "";
+            document.getElementById("registerNumber").value = "";
+            document.getElementById("department").value = "";
+
+            // Update student count
+            updateCount();
+        }
+
+
+        // Function to clear all students
+        function clearAll() {
+
+            const studentList = document.getElementById("studentList");
+
+            // Remove all children
+            while (studentList.children.length > 0) {
+                studentList.children[0].remove();
+            }
+
+            updateCount();
+        }
+
+
+        // Function to update student count
+        function updateCount() {
+
+            const studentList =
+                document.getElementById("studentList");
+
+            // children gives the number of student cards
+            const totalStudents = studentList.children.length;
+
+            document.getElementById("count").textContent =
+                "Total Students: " + totalStudents;
+        }
+
+
+    </script>
+
+</body>
+
+</html>
+```

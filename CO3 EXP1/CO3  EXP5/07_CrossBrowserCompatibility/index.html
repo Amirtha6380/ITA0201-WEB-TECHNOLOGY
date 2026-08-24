@@ -1,0 +1,836 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Cross-Browser Compatibility</title>
+
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+
+        /* ------------------------------------
+           Normal CSS
+        ------------------------------------ */
+
+        body {
+
+            margin: 0;
+
+            font-family: Arial, sans-serif;
+
+            background: linear-gradient(
+                135deg,
+                #667eea,
+                #764ba2
+            );
+
+            min-height: 100vh;
+
+            padding: 40px 20px;
+        }
+
+
+        .container {
+
+            max-width: 850px;
+
+            margin: auto;
+
+            background: white;
+
+            padding: 30px;
+
+            border-radius: 20px;
+
+            box-shadow:
+                0 10px 30px
+                rgba(0, 0, 0, 0.25);
+        }
+
+
+        h1 {
+
+            text-align: center;
+
+            color: #4a148c;
+
+            margin-bottom: 10px;
+        }
+
+
+        .subtitle {
+
+            text-align: center;
+
+            color: #666;
+
+            margin-bottom: 30px;
+        }
+
+
+        .status-box {
+
+            padding: 20px;
+
+            margin-bottom: 20px;
+
+            border-radius: 15px;
+
+            background: #f3e5f5;
+
+            border-left: 6px solid #7b1fa2;
+        }
+
+
+        .status-box h2 {
+
+            margin-top: 0;
+
+            color: #4a148c;
+        }
+
+
+        .feature {
+
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+            padding: 15px;
+
+            margin: 10px 0;
+
+            border-radius: 10px;
+
+            background: #fafafa;
+
+            border: 1px solid #ddd;
+        }
+
+
+        .supported {
+
+            color: green;
+
+            font-weight: bold;
+        }
+
+
+        .unsupported {
+
+            color: red;
+
+            font-weight: bold;
+        }
+
+
+        .partial {
+
+            color: #e65100;
+
+            font-weight: bold;
+        }
+
+
+        .demo-box {
+
+            margin-top: 25px;
+
+            padding: 25px;
+
+            border-radius: 15px;
+
+            background: linear-gradient(
+                135deg,
+                #e0f7fa,
+                #e8eaf6
+            );
+
+            border-left: 6px solid #00838f;
+        }
+
+
+        .demo-box h2 {
+
+            margin-top: 0;
+
+            color: #006064;
+        }
+
+
+        input {
+
+            width: 100%;
+
+            padding: 12px;
+
+            border: 2px solid #80cbc4;
+
+            border-radius: 8px;
+
+            font-size: 16px;
+
+            margin-bottom: 12px;
+        }
+
+
+        button {
+
+            padding: 12px 20px;
+
+            border: none;
+
+            border-radius: 8px;
+
+            background: #00838f;
+
+            color: white;
+
+            font-size: 15px;
+
+            font-weight: bold;
+
+            cursor: pointer;
+
+            margin: 5px;
+        }
+
+
+        button:hover {
+
+            background: #006064;
+        }
+
+
+        #savedData {
+
+            margin-top: 15px;
+
+            padding: 15px;
+
+            background: #fff3e0;
+
+            border-radius: 10px;
+
+            color: #e65100;
+
+            font-weight: bold;
+        }
+
+
+        .fallback {
+
+            margin-top: 25px;
+
+            padding: 20px;
+
+            background: #ffebee;
+
+            border-left: 6px solid #e53935;
+
+            border-radius: 10px;
+
+            color: #b71c1c;
+        }
+
+
+        .success {
+
+            background: #e8f5e9;
+
+            border-left: 6px solid #43a047;
+
+            color: #2e7d32;
+        }
+
+
+        /* ------------------------------------
+           CSS Feature Detection
+        ------------------------------------ */
+
+        @supports (display: grid) {
+
+            .feature-list {
+
+                display: grid;
+
+                grid-template-columns:
+                    repeat(3, 1fr);
+
+                gap: 10px;
+            }
+        }
+
+
+        /* Fallback if CSS Grid is not supported */
+
+        @supports not (display: grid) {
+
+            .feature-list {
+
+                display: block;
+            }
+
+            .feature {
+
+                margin-bottom: 10px;
+            }
+        }
+
+
+        /* Modern CSS feature */
+
+        @supports (backdrop-filter: blur(5px)) {
+
+            .container {
+
+                backdrop-filter: blur(5px);
+            }
+        }
+
+
+        /* Fallback for browsers without backdrop-filter */
+
+        @supports not (backdrop-filter: blur(5px)) {
+
+            .container {
+
+                background: white;
+            }
+        }
+
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <div class="container">
+
+
+        <h1>
+            🌐 Cross-Browser Compatible Webpage
+        </h1>
+
+
+        <p class="subtitle">
+            Feature Detection and Fallback Techniques
+        </p>
+
+
+        <!-- Browser Feature Status -->
+
+        <div class="status-box">
+
+            <h2>
+                🔍 Browser Feature Support
+            </h2>
+
+
+            <div class="feature-list">
+
+
+                <div class="feature">
+
+                    <span>
+                        localStorage
+                    </span>
+
+                    <span
+                        id="storageStatus">
+                        Checking...
+                    </span>
+
+                </div>
+
+
+                <div class="feature">
+
+                    <span>
+                        querySelector()
+                    </span>
+
+                    <span
+                        id="queryStatus">
+                        Checking...
+                    </span>
+
+                </div>
+
+
+                <div class="feature">
+
+                    <span>
+                        CSS Grid
+                    </span>
+
+                    <span
+                        id="gridStatus">
+                        Checking...
+                    </span>
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+
+        <!-- Interactive Demo -->
+
+        <div class="demo-box">
+
+            <h2>
+                💾 localStorage Demo
+            </h2>
+
+
+            <p>
+                Enter your name and save it in the browser.
+            </p>
+
+
+            <input
+                type="text"
+                id="nameInput"
+                placeholder="Enter your name"
+            >
+
+
+            <button id="saveButton">
+                💾 Save Name
+            </button>
+
+
+            <button id="loadButton">
+                📂 Load Name
+            </button>
+
+
+            <button id="clearButton">
+                🗑️ Clear Name
+            </button>
+
+
+            <div id="savedData">
+                No saved name yet.
+            </div>
+
+        </div>
+
+
+        <!-- Fallback Message -->
+
+        <div
+            id="fallbackMessage"
+            class="fallback">
+
+            ⚠️ Checking browser compatibility...
+
+        </div>
+
+
+    </div>
+
+
+
+    <script>
+
+
+        // =====================================================
+        // 1. FEATURE DETECTION - localStorage
+        // =====================================================
+
+        function checkLocalStorage() {
+
+            const status =
+                document.getElementById("storageStatus");
+
+
+            try {
+
+                const testKey =
+                    "__browser_test__";
+
+                localStorage.setItem(
+                    testKey,
+                    "test"
+                );
+
+                localStorage.removeItem(
+                    testKey
+                );
+
+
+                status.textContent =
+                    "✅ Supported";
+
+                status.className =
+                    "supported";
+
+
+                return true;
+
+            }
+
+            catch (error) {
+
+                status.textContent =
+                    "❌ Not Supported";
+
+                status.className =
+                    "unsupported";
+
+
+                return false;
+            }
+        }
+
+
+        // =====================================================
+        // 2. FEATURE DETECTION - querySelector()
+        // =====================================================
+
+        function checkQuerySelector() {
+
+            const status =
+                document.getElementById(
+                    "queryStatus"
+                );
+
+
+            if (
+                typeof document.querySelector ===
+                "function"
+            ) {
+
+                status.textContent =
+                    "✅ Supported";
+
+                status.className =
+                    "supported";
+
+                return true;
+
+            }
+
+            else {
+
+                status.textContent =
+                    "❌ Not Supported";
+
+                status.className =
+                    "unsupported";
+
+                return false;
+            }
+        }
+
+
+        // =====================================================
+        // 3. CSS FEATURE DETECTION - CSS Grid
+        // =====================================================
+
+        function checkCSSGrid() {
+
+            const status =
+                document.getElementById(
+                    "gridStatus"
+                );
+
+
+            if (
+                window.CSS &&
+                CSS.supports(
+                    "display",
+                    "grid"
+                )
+            ) {
+
+                status.textContent =
+                    "✅ Supported";
+
+                status.className =
+                    "supported";
+
+                return true;
+
+            }
+
+            else {
+
+                status.textContent =
+                    "⚠️ Fallback Used";
+
+                status.className =
+                    "partial";
+
+                return false;
+            }
+        }
+
+
+        // =====================================================
+        // Run Feature Detection
+        // =====================================================
+
+        const storageSupported =
+            checkLocalStorage();
+
+
+        const querySupported =
+            checkQuerySelector();
+
+
+        const gridSupported =
+            checkCSSGrid();
+
+
+
+        // =====================================================
+        // 4. localStorage DEMO
+        // =====================================================
+
+        const saveButton =
+            document.getElementById(
+                "saveButton"
+            );
+
+
+        const loadButton =
+            document.getElementById(
+                "loadButton"
+            );
+
+
+        const clearButton =
+            document.getElementById(
+                "clearButton"
+            );
+
+
+        const nameInput =
+            document.getElementById(
+                "nameInput"
+            );
+
+
+        const savedData =
+            document.getElementById(
+                "savedData"
+            );
+
+
+        // Save
+
+        saveButton.addEventListener(
+            "click",
+            function () {
+
+
+                if (!storageSupported) {
+
+                    savedData.textContent =
+                        "⚠️ localStorage is not supported. Your name cannot be saved.";
+
+                    return;
+                }
+
+
+                const name =
+                    nameInput.value.trim();
+
+
+                if (name === "") {
+
+                    savedData.textContent =
+                        "Please enter your name.";
+
+                    return;
+                }
+
+
+                localStorage.setItem(
+                    "studentName",
+                    name
+                );
+
+
+                savedData.textContent =
+                    "✅ Name saved successfully: "
+                    + name;
+
+            }
+        );
+
+
+
+        // Load
+
+        loadButton.addEventListener(
+            "click",
+            function () {
+
+
+                if (!storageSupported) {
+
+                    savedData.textContent =
+                        "⚠️ localStorage is not supported.";
+
+                    return;
+                }
+
+
+                const name =
+                    localStorage.getItem(
+                        "studentName"
+                    );
+
+
+                if (name) {
+
+                    savedData.textContent =
+                        "📂 Saved Name: "
+                        + name;
+
+                }
+
+                else {
+
+                    savedData.textContent =
+                        "No saved name found.";
+                }
+
+            }
+        );
+
+
+
+        // Clear
+
+        clearButton.addEventListener(
+            "click",
+            function () {
+
+
+                if (!storageSupported) {
+
+                    savedData.textContent =
+                        "⚠️ localStorage is not supported.";
+
+                    return;
+                }
+
+
+                localStorage.removeItem(
+                    "studentName"
+                );
+
+
+                savedData.textContent =
+                    "🗑️ Saved name has been cleared.";
+
+            }
+        );
+
+
+
+        // =====================================================
+        // 5. querySelector() with fallback
+        // =====================================================
+
+        function getElement(selector) {
+
+
+            if (
+                typeof document.querySelector ===
+                "function"
+            ) {
+
+                return document.querySelector(
+                    selector
+                );
+
+            }
+
+            else {
+
+                /*
+                    Fallback:
+                    If querySelector() is unavailable,
+                    use getElementById().
+                */
+
+                if (
+                    selector === "#fallbackMessage"
+                ) {
+
+                    return document.getElementById(
+                        "fallbackMessage"
+                    );
+                }
+
+                return null;
+            }
+        }
+
+
+
+        // =====================================================
+        // 6. Display Compatibility Message
+        // =====================================================
+
+        const compatibilityBox =
+            getElement(
+                "#fallbackMessage"
+            );
+
+
+        if (
+            storageSupported &&
+            querySupported &&
+            gridSupported
+        ) {
+
+            compatibilityBox.textContent =
+                "✅ Your browser supports the required features. The webpage is running normally.";
+
+            compatibilityBox.className =
+                "fallback success";
+
+        }
+
+        else {
+
+            compatibilityBox.textContent =
+                "⚠️ Some browser features are not supported. Fallback techniques are being used.";
+
+            compatibilityBox.className =
+                "fallback";
+        }
+
+
+    </script>
+
+
+</body>
+
+</html>
+```

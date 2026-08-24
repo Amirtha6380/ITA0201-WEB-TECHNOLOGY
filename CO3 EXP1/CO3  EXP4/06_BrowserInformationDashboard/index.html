@@ -1,0 +1,522 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Browser Information Dashboard</title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+
+            background: linear-gradient(
+                135deg,
+                #2193b0,
+                #6dd5ed
+            );
+
+            min-height: 100vh;
+
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: auto;
+
+            background: white;
+
+            padding: 30px;
+
+            border-radius: 20px;
+
+            box-shadow:
+                0 10px 30px rgba(0, 0, 0, 0.25);
+        }
+
+        h1 {
+            text-align: center;
+
+            color: #006064;
+
+            margin-bottom: 8px;
+        }
+
+        .subtitle {
+            text-align: center;
+
+            color: #666;
+
+            margin-bottom: 30px;
+        }
+
+        .dashboard {
+            display: grid;
+
+            grid-template-columns:
+                repeat(auto-fit, minmax(250px, 1fr));
+
+            gap: 18px;
+        }
+
+        .card {
+            padding: 20px;
+
+            border-radius: 15px;
+
+            background: linear-gradient(
+                135deg,
+                #e0f7fa,
+                #e8eaf6
+            );
+
+            border-left: 6px solid #00838f;
+
+            transition: 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+
+            box-shadow:
+                0 8px 18px rgba(0, 0, 0, 0.15);
+        }
+
+        .card h3 {
+            margin-top: 0;
+
+            color: #006064;
+        }
+
+        .value {
+            color: #333;
+
+            font-size: 17px;
+
+            font-weight: bold;
+
+            word-break: break-word;
+        }
+
+        .online {
+            color: green;
+        }
+
+        .offline {
+            color: red;
+        }
+
+        .scroll-section {
+            margin-top: 25px;
+
+            padding: 20px;
+
+            border-radius: 15px;
+
+            background: #fff3e0;
+
+            border-left: 6px solid #ff9800;
+        }
+
+        .scroll-section h2 {
+            color: #e65100;
+
+            margin-top: 0;
+        }
+
+        .instructions {
+            margin-top: 25px;
+
+            padding: 20px;
+
+            background: #f3e5f5;
+
+            border-radius: 15px;
+
+            text-align: center;
+
+            color: #6a1b9a;
+        }
+
+        .long-content {
+            margin-top: 30px;
+
+            height: 700px;
+
+            padding: 30px;
+
+            border-radius: 15px;
+
+            background: linear-gradient(
+                180deg,
+                #e8f5e9,
+                #fffde7,
+                #fce4ec
+            );
+
+            text-align: center;
+        }
+
+        .long-content h2 {
+            color: #2e7d32;
+        }
+
+        .long-content p {
+            margin-top: 250px;
+
+            font-size: 18px;
+
+            color: #555;
+        }
+
+        #resizeStatus {
+            text-align: center;
+
+            margin-top: 20px;
+
+            color: #555;
+
+            font-style: italic;
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+    <div class="container">
+
+        <h1>🌐 Browser Information Dashboard</h1>
+
+        <p class="subtitle">
+            Information collected using JavaScript Window Object
+        </p>
+
+
+        <!-- Browser Information -->
+
+        <div class="dashboard">
+
+
+            <!-- Current URL -->
+
+            <div class="card">
+
+                <h3>🔗 Current URL</h3>
+
+                <p
+                    id="url"
+                    class="value">
+                    Loading...
+                </p>
+
+            </div>
+
+
+            <!-- Browser Language -->
+
+            <div class="card">
+
+                <h3>🌍 Browser Language</h3>
+
+                <p
+                    id="language"
+                    class="value">
+                    Loading...
+                </p>
+
+            </div>
+
+
+            <!-- Online Status -->
+
+            <div class="card">
+
+                <h3>📡 Online Status</h3>
+
+                <p
+                    id="onlineStatus"
+                    class="value">
+                    Loading...
+                </p>
+
+            </div>
+
+
+            <!-- Screen Size -->
+
+            <div class="card">
+
+                <h3>🖥️ Screen Size</h3>
+
+                <p
+                    id="screenSize"
+                    class="value">
+                    Loading...
+                </p>
+
+            </div>
+
+
+            <!-- Viewport Size -->
+
+            <div class="card">
+
+                <h3>📱 Viewport Size</h3>
+
+                <p
+                    id="viewportSize"
+                    class="value">
+                    Loading...
+                </p>
+
+            </div>
+
+
+            <!-- Browser Information -->
+
+            <div class="card">
+
+                <h3>🌐 Browser Information</h3>
+
+                <p
+                    id="browserInfo"
+                    class="value">
+                    Loading...
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <!-- Scroll Position -->
+
+        <div class="scroll-section">
+
+            <h2>📜 Scroll Position</h2>
+
+            <p class="value">
+                Horizontal Scroll:
+                <span id="scrollX">0</span> px
+            </p>
+
+            <p class="value">
+                Vertical Scroll:
+                <span id="scrollY">0</span> px
+            </p>
+
+        </div>
+
+
+        <!-- Resize Status -->
+
+        <p id="resizeStatus">
+            Resize the browser window to see the viewport values change.
+        </p>
+
+
+        <!-- Instructions -->
+
+        <div class="instructions">
+
+            <strong>💡 Try this:</strong>
+
+            <p>
+                1. Resize your browser window.
+                <br>
+                2. Scroll down the page.
+                <br>
+                3. Watch the viewport and scroll values update automatically.
+            </p>
+
+        </div>
+
+
+        <!-- Extra Long Content -->
+
+        <div class="long-content">
+
+            <h2>📊 Scroll Demonstration Area</h2>
+
+            <p>
+                Keep scrolling to observe the
+                <strong>window.scrollX</strong>
+                and
+                <strong>window.scrollY</strong>
+                values changing.
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <script>
+
+
+        // ==========================================
+        // 1. window.location
+        // ==========================================
+
+        document.getElementById("url").textContent =
+            window.location.href;
+
+
+        // ==========================================
+        // 2. navigator.language
+        // ==========================================
+
+        document.getElementById("language").textContent =
+            navigator.language;
+
+
+        // ==========================================
+        // 3. navigator.onLine
+        // ==========================================
+
+        function updateOnlineStatus() {
+
+            const status =
+                document.getElementById("onlineStatus");
+
+            if (navigator.onLine) {
+
+                status.textContent =
+                    "🟢 Online";
+
+                status.className =
+                    "value online";
+
+            } else {
+
+                status.textContent =
+                    "🔴 Offline";
+
+                status.className =
+                    "value offline";
+            }
+        }
+
+
+        updateOnlineStatus();
+
+
+        // Update if internet connection changes
+
+        window.addEventListener(
+            "online",
+            updateOnlineStatus
+        );
+
+        window.addEventListener(
+            "offline",
+            updateOnlineStatus
+        );
+
+
+        // ==========================================
+        // 4. screen.width and screen.height
+        // ==========================================
+
+        function updateScreenSize() {
+
+            document.getElementById("screenSize")
+                .textContent =
+                screen.width +
+                " × " +
+                screen.height +
+                " pixels";
+
+
+            // ==========================================
+            // 5. window.innerWidth and innerHeight
+            // ==========================================
+
+            document.getElementById("viewportSize")
+                .textContent =
+                window.innerWidth +
+                " × " +
+                window.innerHeight +
+                " pixels";
+        }
+
+
+        updateScreenSize();
+
+
+        // ==========================================
+        // 6. Browser information using navigator
+        // ==========================================
+
+        document.getElementById("browserInfo")
+            .textContent =
+            navigator.userAgent;
+
+
+        // ==========================================
+        // 7. window.scrollX and window.scrollY
+        // ==========================================
+
+        function updateScrollPosition() {
+
+            document.getElementById("scrollX")
+                .textContent =
+                window.scrollX;
+
+            document.getElementById("scrollY")
+                .textContent =
+                window.scrollY;
+        }
+
+
+        updateScrollPosition();
+
+
+        // ==========================================
+        // Scroll Event
+        // ==========================================
+
+        window.addEventListener(
+            "scroll",
+            updateScrollPosition
+        );
+
+
+        // ==========================================
+        // 8. Resize Event
+        // ==========================================
+
+        window.addEventListener(
+            "resize",
+            function () {
+
+                updateScreenSize();
+
+                document.getElementById("resizeStatus")
+                    .textContent =
+                    "✅ Browser resized! Viewport information updated.";
+
+            }
+        );
+
+
+    </script>
+
+</body>
+
+</html>
+```

@@ -1,0 +1,109 @@
+```html
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Profile</title>
+
+    <style>
+        body {
+            font-family: Arial;
+            text-align: center;
+            background-color: #f2f2f2;
+            padding: 30px;
+        }
+
+        #profile {
+            width: 350px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: white;
+            border: 2px solid black;
+            border-radius: 10px;
+        }
+
+        button {
+            margin: 5px;
+            padding: 10px 15px;
+            cursor: pointer;
+        }
+
+        .highlight {
+            border: 3px solid blue;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1 id="heading">Student Profile</h1>
+
+    <div id="profile">
+
+        <h2 id="studentName">Amirthavalli</h2>
+
+        <p id="details">
+            Register Number: 23CS001<br>
+            Department: Computer Science<br>
+            Year: III
+        </p>
+
+    </div>
+
+    <h3>Modify Profile</h3>
+
+    <button onclick="changeHeading()">Change Heading</button>
+
+    <button onclick="changeTextColor()">Change Text Colour</button>
+
+    <button onclick="changeBackground()">Change Background</button>
+
+    <button onclick="hideProfile()">Hide Profile</button>
+
+    <button onclick="showProfile()">Show Profile</button>
+
+    <button onclick="highlightProfile()">Highlight Profile</button>
+
+    <script>
+
+        // getElementById() + textContent
+        function changeHeading() {
+            document.getElementById("heading").textContent =
+                "Updated Student Profile";
+        }
+
+        // querySelector() + style
+        function changeTextColor() {
+            document.querySelector("#studentName").style.color = "blue";
+        }
+
+        // style
+        function changeBackground() {
+            document.querySelector("#profile").style.backgroundColor =
+                "lightyellow";
+        }
+
+        // style.display
+        function hideProfile() {
+            document.getElementById("profile").style.display = "none";
+        }
+
+        function showProfile() {
+            document.getElementById("profile").style.display = "block";
+        }
+
+        // classList
+        function highlightProfile() {
+            document.getElementById("profile").classList.toggle("highlight");
+        }
+
+        // setAttribute()
+        document.getElementById("studentName").setAttribute(
+            "title",
+            "Student Name"
+        );
+
+    </script>
+
+</body>
+</html>
+```
