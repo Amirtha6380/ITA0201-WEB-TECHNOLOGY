@@ -1,0 +1,837 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Course XML & XPath Explorer</title>
+
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+    <header class="hero">
+
+        <div class="hero-content">
+
+            <p class="tag">WEB TECHNOLOGY • UNIT IV</p>
+
+            <h1>Course XML & XPath Explorer</h1>
+
+            <p>
+                Interactive XML dataset analysis using XPath and XSLT
+            </p>
+
+        </div>
+
+    </header>
+
+
+    <main class="container">
+
+
+        <!-- DASHBOARD -->
+
+        <section class="stats">
+
+            <div class="stat-card">
+                <span>📚</span>
+                <h3 id="totalCourses">0</h3>
+                <p>Total Courses</p>
+            </div>
+
+            <div class="stat-card">
+                <span>👨‍🎓</span>
+                <h3 id="totalStudents">0</h3>
+                <p>Total Students</p>
+            </div>
+
+            <div class="stat-card">
+                <span>📖</span>
+                <h3 id="theoryCount">0</h3>
+                <p>Theory Courses</p>
+            </div>
+
+            <div class="stat-card">
+                <span>⭐</span>
+                <h3 id="fourCredits">0</h3>
+                <p>4 Credit Courses</p>
+            </div>
+
+        </section>
+
+
+        <!-- SEARCH -->
+
+        <section class="panel">
+
+            <div class="section-title">
+
+                <div>
+                    <span class="mini-label">SEARCH</span>
+                    <h2>Find Course by ID</h2>
+                </div>
+
+            </div>
+
+            <div class="search-box">
+
+                <input
+                    type="text"
+                    id="courseSearch"
+                    placeholder="Enter Course ID e.g. C104">
+
+                <button onclick="searchCourse()">
+                    Search
+                </button>
+
+                <button class="secondary"
+                        onclick="showAllCourses()">
+                    Show All
+                </button>
+
+            </div>
+
+            <div id="searchResult"></div>
+
+        </section>
+
+
+        <!-- ALL 5 COURSES -->
+
+        <section class="panel">
+
+            <div class="section-title">
+
+                <div>
+                    <span class="mini-label">XML DATASET</span>
+                    <h2>All 5 Courses</h2>
+                </div>
+
+                <span class="count-badge" id="courseCount">
+                    5 Records
+                </span>
+
+            </div>
+
+            <div class="table-wrapper">
+
+                <table>
+
+                    <thead>
+
+                        <tr>
+                            <th>ID</th>
+                            <th>Code</th>
+                            <th>Course Name</th>
+                            <th>Faculty</th>
+                            <th>Students</th>
+                            <th>Credits</th>
+                            <th>Type</th>
+                        </tr>
+
+                    </thead>
+
+                    <tbody id="courseTable">
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </section>
+
+
+        <!-- XPATH QUESTIONS -->
+
+        <section class="panel">
+
+            <div class="section-title">
+
+                <div>
+                    <span class="mini-label">QUESTION 2</span>
+                    <h2>XPath Data Selection</h2>
+                </div>
+
+            </div>
+
+
+            <div class="xpath-grid">
+
+
+                <div class="xpath-card">
+
+                    <span>Q2(a)</span>
+
+                    <code>/courses/course</code>
+
+                    <p>All course records</p>
+
+                    <button onclick="runXPath('a')">
+                        Execute
+                    </button>
+
+                    <div id="result-a"></div>
+
+                </div>
+
+
+                <div class="xpath-card">
+
+                    <span>Q2(b)</span>
+
+                    <code>/courses/course/name</code>
+
+                    <p>Names of all courses</p>
+
+                    <button onclick="runXPath('b')">
+                        Execute
+                    </button>
+
+                    <div id="result-b"></div>
+
+                </div>
+
+
+                <div class="xpath-card">
+
+                    <span>Q2(c)</span>
+
+                    <code>/courses/course[students &gt; 50]</code>
+
+                    <p>Courses with more than 50 students</p>
+
+                    <button onclick="runXPath('c')">
+                        Execute
+                    </button>
+
+                    <div id="result-c"></div>
+
+                </div>
+
+
+                <div class="xpath-card">
+
+                    <span>Q2(d)</span>
+
+                    <code>/courses/course[credits = 4]</code>
+
+                    <p>Courses carrying 4 credits</p>
+
+                    <button onclick="runXPath('d')">
+                        Execute
+                    </button>
+
+                    <div id="result-d"></div>
+
+                </div>
+
+
+                <div class="xpath-card">
+
+                    <span>Q2(e)</span>
+
+                    <code>/courses/course[type='Theory']</code>
+
+                    <p>Theory courses</p>
+
+                    <button onclick="runXPath('e')">
+                        Execute
+                    </button>
+
+                    <div id="result-e"></div>
+
+                </div>
+
+
+                <div class="xpath-card">
+
+                    <span>Q2(f)</span>
+
+                    <code>
+                        /courses/course[type='Theory' and students &gt; 50]/name
+                    </code>
+
+                    <p>Theory courses with more than 50 students</p>
+
+                    <button onclick="runXPath('f')">
+                        Execute
+                    </button>
+
+                    <div id="result-f"></div>
+
+                </div>
+
+
+                <div class="xpath-card">
+
+                    <span>Q2(g)</span>
+
+                    <code>
+                        /courses/course[credits &gt;= 4]/faculty
+                    </code>
+
+                    <p>Faculty handling at least 4 credits</p>
+
+                    <button onclick="runXPath('g')">
+                        Execute
+                    </button>
+
+                    <div id="result-g"></div>
+
+                </div>
+
+
+                <div class="xpath-card">
+
+                    <span>Q2(h)</span>
+
+                    <code>/courses/course[@id='C104']</code>
+
+                    <p>Course with ID C104</p>
+
+                    <button onclick="runXPath('h')">
+                        Execute
+                    </button>
+
+                    <div id="result-h"></div>
+
+                </div>
+
+
+                <div class="xpath-card">
+
+                    <span>Q2(i)</span>
+
+                    <code>/courses/course[1]</code>
+
+                    <p>First course</p>
+
+                    <button onclick="runXPath('i')">
+                        Execute
+                    </button>
+
+                    <div id="result-i"></div>
+
+                </div>
+
+
+                <div class="xpath-card">
+
+                    <span>Q2(j)</span>
+
+                    <code>/courses/course[last()]</code>
+
+                    <p>Last course</p>
+
+                    <button onclick="runXPath('j')">
+                        Execute
+                    </button>
+
+                    <div id="result-j"></div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- XSLT -->
+
+        <section class="panel">
+
+            <div class="section-title">
+
+                <div>
+                    <span class="mini-label">QUESTION 3</span>
+                    <h2>XSLT Transformation</h2>
+                </div>
+
+            </div>
+
+            <div class="xslt-info">
+
+                <div>
+                    <strong>Condition</strong>
+                    <p>Students &gt; 40</p>
+                </div>
+
+                <div>
+                    <strong>Sorting</strong>
+                    <p>Student enrollment ↓</p>
+                </div>
+
+                <div>
+                    <strong>Output</strong>
+                    <p>HTML Table</p>
+                </div>
+
+            </div>
+
+            <a class="xslt-button"
+               href="courses.xml"
+               target="_blank">
+
+                Open XSLT High Enrollment Report →
+
+            </a>
+
+        </section>
+
+
+    </main>
+
+
+    <footer>
+
+        <p>
+            Web Technology – Unit IV |
+            XML • XPath • XSLT
+        </p>
+
+    </footer>
+
+
+<script>
+
+let xmlDoc;
+
+
+/* LOAD XML */
+
+fetch("courses.xml")
+
+.then(response => response.text())
+
+.then(data => {
+
+    const parser = new DOMParser();
+
+    xmlDoc = parser.parseFromString(
+        data,
+        "application/xml"
+    );
+
+    displayAllCourses();
+
+    updateDashboard();
+
+});
+
+
+/* GET COURSE ELEMENTS */
+
+function getCourses() {
+
+    return xmlDoc.evaluate(
+        "/courses/course",
+        xmlDoc,
+        null,
+        XPathResult.ORDERED_NODE_SNAPSHOT_TYPE,
+        null
+    );
+
+}
+
+
+/* DISPLAY ALL 5 */
+
+function displayAllCourses() {
+
+    const snapshot = getCourses();
+
+    const table =
+        document.getElementById("courseTable");
+
+    table.innerHTML = "";
+
+    for (let i = 0; i < snapshot.snapshotLength; i++) {
+
+        const course = snapshot.snapshotItem(i);
+
+        const id = course.getAttribute("id");
+
+        const code =
+            course.querySelector("code").textContent;
+
+        const name =
+            course.querySelector("name").textContent;
+
+        const faculty =
+            course.querySelector("faculty").textContent;
+
+        const students =
+            course.querySelector("students").textContent;
+
+        const credits =
+            course.querySelector("credits").textContent;
+
+        const type =
+            course.querySelector("type").textContent;
+
+        const row = document.createElement("tr");
+
+        row.innerHTML = `
+            <td><strong>${id}</strong></td>
+            <td>${code}</td>
+            <td>${name}</td>
+            <td>${faculty}</td>
+            <td><span class="student-badge">${students}</span></td>
+            <td>${credits}</td>
+            <td>${type}</td>
+        `;
+
+        table.appendChild(row);
+
+    }
+
+}
+
+
+/* SEARCH BY ID */
+
+function searchCourse() {
+
+    const id =
+        document
+        .getElementById("courseSearch")
+        .value
+        .trim()
+        .toUpperCase();
+
+    const result =
+        document.getElementById("searchResult");
+
+    if (!id) {
+
+        result.innerHTML =
+            `<div class="warning">
+                Please enter a course ID such as C104.
+             </div>`;
+
+        return;
+    }
+
+
+    const xpath =
+        `/courses/course[@id='${id}']`;
+
+
+    const course =
+        xmlDoc.evaluate(
+            xpath,
+            xmlDoc,
+            null,
+            XPathResult.FIRST_ORDERED_NODE_TYPE,
+            null
+        ).singleNodeValue;
+
+
+    if (!course) {
+
+        result.innerHTML =
+            `<div class="error">
+                No course found with ID <strong>${id}</strong>.
+             </div>`;
+
+        return;
+    }
+
+
+    const code =
+        course.querySelector("code").textContent;
+
+    const name =
+        course.querySelector("name").textContent;
+
+    const faculty =
+        course.querySelector("faculty").textContent;
+
+    const students =
+        course.querySelector("students").textContent;
+
+    const credits =
+        course.querySelector("credits").textContent;
+
+    const type =
+        course.querySelector("type").textContent;
+
+
+    result.innerHTML = `
+
+        <div class="course-detail">
+
+            <div class="detail-header">
+
+                <div>
+
+                    <span class="detail-id">
+                        ${id}
+                    </span>
+
+                    <h2>${name}</h2>
+
+                    <p>${code}</p>
+
+                </div>
+
+                <div class="large-number">
+                    ${students}
+                    <small>Students</small>
+                </div>
+
+            </div>
+
+
+            <div class="detail-grid">
+
+                <div>
+                    <span>Faculty</span>
+                    <strong>${faculty}</strong>
+                </div>
+
+                <div>
+                    <span>Credits</span>
+                    <strong>${credits}</strong>
+                </div>
+
+                <div>
+                    <span>Type</span>
+                    <strong>${type}</strong>
+                </div>
+
+                <div>
+                    <span>Course ID</span>
+                    <strong>${id}</strong>
+                </div>
+
+            </div>
+
+        </div>
+
+    `;
+
+}
+
+
+/* SHOW ALL */
+
+function showAllCourses() {
+
+    document
+    .getElementById("courseSearch")
+    .value = "";
+
+    document
+    .getElementById("searchResult")
+    .innerHTML = "";
+
+    displayAllCourses();
+
+}
+
+
+/* DASHBOARD */
+
+function updateDashboard() {
+
+    const courses =
+        getCourses();
+
+    let totalStudents = 0;
+
+    let theory = 0;
+
+    let fourCredits = 0;
+
+
+    for (
+        let i = 0;
+        i < courses.snapshotLength;
+        i++
+    ) {
+
+        const course =
+            courses.snapshotItem(i);
+
+
+        totalStudents +=
+            Number(
+                course
+                .querySelector("students")
+                .textContent
+            );
+
+
+        if (
+            course
+            .querySelector("type")
+            .textContent === "Theory"
+        ) {
+
+            theory++;
+
+        }
+
+
+        if (
+            Number(
+                course
+                .querySelector("credits")
+                .textContent
+            ) === 4
+        ) {
+
+            fourCredits++;
+
+        }
+
+    }
+
+
+    document
+    .getElementById("totalCourses")
+    .textContent =
+        courses.snapshotLength;
+
+
+    document
+    .getElementById("totalStudents")
+    .textContent =
+        totalStudents;
+
+
+    document
+    .getElementById("theoryCount")
+    .textContent =
+        theory;
+
+
+    document
+    .getElementById("fourCredits")
+    .textContent =
+        fourCredits;
+
+}
+
+
+/* XPATH EXECUTION */
+
+function runXPath(question) {
+
+    const expressions = {
+
+        a: "/courses/course",
+
+        b: "/courses/course/name",
+
+        c: "/courses/course[students > 50]",
+
+        d: "/courses/course[credits = 4]",
+
+        e: "/courses/course[type='Theory']",
+
+        f:
+        "/courses/course[type='Theory' and students > 50]/name",
+
+        g:
+        "/courses/course[credits >= 4]/faculty",
+
+        h:
+        "/courses/course[@id='C104']",
+
+        i:
+        "/courses/course[1]",
+
+        j:
+        "/courses/course[last()]"
+
+    };
+
+
+    const expression =
+        expressions[question];
+
+
+    const result =
+        document
+        .getElementById(`result-${question}`);
+
+
+    const snapshot =
+        xmlDoc.evaluate(
+            expression,
+            xmlDoc,
+            null,
+            XPathResult.ORDERED_NODE_SNAPSHOT_TYPE,
+            null
+        );
+
+
+    let output = "";
+
+
+    for (
+        let i = 0;
+        i < snapshot.snapshotLength;
+        i++
+    ) {
+
+        const node =
+            snapshot.snapshotItem(i);
+
+
+        if (
+            node.nodeType === Node.ELEMENT_NODE
+        ) {
+
+            if (
+                node.tagName === "course"
+            ) {
+
+                output += `
+                    <div class="xpath-result">
+                        <strong>
+                            ${node.getAttribute("id")}
+                        </strong>
+                        -
+                        ${node.querySelector("name").textContent}
+                    </div>
+                `;
+
+            } else {
+
+                output += `
+                    <div class="xpath-result">
+                        ${node.textContent}
+                    </div>
+                `;
+
+            }
+
+        }
+
+    }
+
+
+    result.innerHTML =
+        output ||
+        `<div class="xpath-result">
+            No matching records.
+         </div>`;
+
+}
+
+</script>
+
+</body>
+
+</html>
